@@ -28,7 +28,7 @@ import tensorflow as tf
 app = Flask(__name__, template_folder='template')
 
 # RELATED TO THE SQL DATABASE
-# app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
+app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 # app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
 # db=SQLAlchemy(app)
 
@@ -142,7 +142,7 @@ def send_file(filename):
 # //////////////////////////////////////////////
 
 # app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
-
+app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 # db=SQLAlchemy(app)
 
 # class User(db.Model):
@@ -169,7 +169,7 @@ def about():
 
 @app.route("/Cancer_page")
 def cancer():
-    return render_template("Cancer.html")
+    return render_template("cancer.html")
 
 
 @app.route("/Diabetes_page")
