@@ -19,7 +19,7 @@ import tensorflow
 # from tensorflow.keras.models import Model
 
 import os
-from flask import send_from_directory
+#from flask import send_from_directory
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import tensorflow as tf
@@ -285,13 +285,13 @@ def result():
 
 
 
-#if __name__ == "__main__":
- #   app.run(debug=True)
 if __name__ == "__main__":
+    app.run(debug=True)
+'''if __name__ == "__main__":
     app.secret_key = 'super secret key'
     app.config['SESSION_TYPE'] = 'filesystem'
     sess = Session()
     sess.init_app(app)
 
 app.debug = True
-app.run()
+app.run()'''
