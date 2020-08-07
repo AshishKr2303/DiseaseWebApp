@@ -25,12 +25,16 @@ from tensorflow.keras.preprocessing import image
 import tensorflow as tf
 
 # from this import SQLAlchemy
+from flask_session import Session
 app = Flask(__name__, template_folder='template')
+#app.secret_key = os.urandom(24)
 
+#login_manager = flask_login.lo()
+#login_manager.init_app(app)
 # RELATED TO THE SQL DATABASE
-app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
-# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
-# db=SQLAlchemy(app)
+#app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
+#app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
+#db=SQLAlchemy(app)
 
 # from model import User,Post
 
@@ -106,7 +110,7 @@ def upload_file():
             return redirect(url_for("Malaria"))
 
 
-@app.route('/result', methods=['POST', 'GET'])
+@app.route('/upload11', methods=['POST', 'GET'])
 def upload11_file():
     if request.method == 'GET':
         return render_template('Pneumonia.html')
@@ -281,13 +285,13 @@ def result():
 
 
 
+#if __name__ == "__main__":
+ #   app.run(debug=True)
 if __name__ == "__main__":
-    app.run(debug=True)
-'''if __name__ == "__main__":
     app.secret_key = 'super secret key'
     app.config['SESSION_TYPE'] = 'filesystem'
-    sess = session()
+    sess = Session()
     sess.init_app(app)
 
 app.debug = True
-app.run()'''
+app.run()
