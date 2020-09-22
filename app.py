@@ -136,6 +136,12 @@ def upload11_file():
         except:
             flash("Please select the image first !!", "danger")
             return redirect(url_for("Pneumonia"))
+			
+@app.route('/download')
+def downloadFile ():
+    #For windows you need to use drive name [ex: F:/Example.pdf]
+    path = "/abc.xlsx"
+    return send_file(path, as_attachment=True)
 
 
 @app.route('/uploads/<filename>')
