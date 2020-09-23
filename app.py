@@ -26,7 +26,7 @@ import tensorflow as tf
 
 # from this import SQLAlchemy
 from flask_session import Session
-app = Flask(__name__, template_folder='template')
+app = Flask(__name__, template_folder='template',static_folder='Files')
 #app.secret_key = os.urandom(24)
 
 #login_manager = flask_login.lo()
@@ -77,7 +77,9 @@ def api1(full_path):
     predicted = model222.predict(data)
     return predicted
 
-
+@app.route('/Files/<path:filename>')
+def download(filename):
+    return send_from_directory(directory='Files', filename=filename)
 # home page
 
 # @app.route('/')
@@ -136,27 +138,13 @@ def upload11_file():
         except:
             flash("Please select the image first !!", "danger")
             return redirect(url_for("Pneumonia"))
-			
 
 
 @app.route('/uploads/<filename>')
 def send_file(filename):
     return send_from_directory(UPLOAD_FOLDER, filename)
 
-'''
-@app.route('/download')
-def downloadFile ():
-    #For windows you need to use drive name [ex: F:/Example.pdf]
-    path = "abc.xlsx"
-    return send_file(path, as_attachment=True)'''
-	
-@app.route('/file')
-def return_files():
-    return send_file(
-        'abc.xlsx',
-        attachment_filename='abc.xlsx',
-        as_attachment=True
-    )	
+
 # //////////////////////////////////////////////
 
 # app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
